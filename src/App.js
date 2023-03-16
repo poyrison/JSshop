@@ -174,7 +174,6 @@ function App() {
                     .then((result) => {
                       const newShoes = [...shoes, ...result.data];
                       setShoes(newShoes);
-                      console.log(data);
                       setLoadingIcon(false);
                     })
                     .catch(() => {
