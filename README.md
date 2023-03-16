@@ -1,3 +1,3 @@
-#리액트 포트폴리오
+#React Shop
 
 Link: <https://portfolio-react-shop.netlify.app>
