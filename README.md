@@ -1,3 +1,3 @@
-# React Shop2
+# React Shop
 
 Link: <https://portfolio-react-shop.netlify.app>
