@@ -59,7 +59,6 @@ function App() {
       {["lg"].map((expand, i) => (
         <div style={{ height: "56px" }} key={i}>
           <Navbar
-            key={expand}
             bg="dark"
             variant="dark"
             expand={expand}
