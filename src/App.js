@@ -59,8 +59,8 @@ function App() {
       {["lg"].map((expand, i) => (
         <div style={{ height: "56px" }} key={i}>
           <Navbar
-            bg="dark"
-            variant="dark"
+            bg="light"
+            variant="light"
             expand={expand}
             id="reactHead"
             className="mb-3 navbar"
@@ -98,9 +98,25 @@ function App() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="https://github.com/poyrison/react_shop/">
-                      Link
+                    <Nav.Link title="홈으로" href="/" className="navIcon">
+                      <img
+                        style={{
+                          height: "30px",
+                          width: "33px",
+                          marginLeft: "-2px",
+                        }}
+                        src={process.env.PUBLIC_URL + `/img/home.png`}
+                      />
+                    </Nav.Link>
+                    <Nav.Link
+                      className="navIcon"
+                      title="장바구니"
+                      href="https://github.com/poyrison/react_shop/"
+                    >
+                      <img
+                        style={{ height: "28px", width: "30px" }}
+                        src={process.env.PUBLIC_URL + `/img/cart.png`}
+                      />
                     </Nav.Link>
                     <NavDropdown
                       title="Dropdown"

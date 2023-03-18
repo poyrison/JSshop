@@ -2,18 +2,18 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function Items(props) {
+function Items({ shoes, gridStyle, navigate }) {
   return (
     <Container>
       <Row>
-        {props.shoes.map((e, i) => {
+        {shoes.map((e, i) => {
           return (
             <Col
               sm
               key={i}
-              className={`${props.gridStyle} itemLine`} //`itemLine ${props.grid}`
+              className={`${gridStyle} itemLine`} //`itemLine ${grid}`
               onClick={() => {
-                props.navigate(`/detail/${i}`);
+                navigate(`/detail/${i}`);
               }}
             >
               <img
@@ -21,9 +21,9 @@ function Items(props) {
                 src={process.env.PUBLIC_URL + `/img/shoes${i}.jpg`}
                 style={{ width: "80%" }}
               />
-              <h4>{props.shoes[i].title}</h4>
-              <p>{props.shoes[i].content}</p>
-              <p>price: {props.shoes[i].price}</p>
+              <h4>{shoes[i].title}</h4>
+              <p>{shoes[i].content}</p>
+              <p>price: {shoes[i].price}</p>
             </Col>
           );
         })}
