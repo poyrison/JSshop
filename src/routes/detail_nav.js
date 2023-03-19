@@ -4,7 +4,6 @@
 // 4. 원할 때 2번 탈부착
 
 import Nav from "react-bootstrap/Nav";
-import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 

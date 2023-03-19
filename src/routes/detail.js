@@ -21,6 +21,7 @@ function Detail({ shoes, alertGridStyle }) {
   const [alert2, setAlert2] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
   const [text, setText] = useState("");
+  const [fade, setFade] = useState("");
   const { id } = useParams();
   const findId = shoes.find((item) => item.id == id);
 
@@ -64,8 +65,19 @@ function Detail({ shoes, alertGridStyle }) {
     };
   }, [textAlert]);
 
+  // detail 페이지 로드시 opacity 효과 0 => 1로 변경
+  useEffect(() => {
+    const FADE = setTimeout(() => {
+      setFade("end");
+    }, 10);
+
+    return () => {
+      clearTimeout(FADE);
+    };
+  }, [fade]);
+
   return (
-    <Container>
+    <Container className={`start ${fade}`}>
       <>
         <div style={{ height: "100px", margin: "30px 0 0 0" }}>
           {alert === true ? (
