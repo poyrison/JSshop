@@ -67,14 +67,11 @@ function Detail({ shoes, alertGridStyle }) {
 
   // detail 페이지 로드시 opacity 효과 0 => 1로 변경
   useEffect(() => {
-    const FADE = setTimeout(() => {
-      setFade("end");
-    }, 10);
-
+    setFade("end");
     return () => {
-      clearTimeout(FADE);
+      setFade("");
     };
-  }, [fade]);
+  }, []);
 
   return (
     <Container className={`start ${fade}`}>

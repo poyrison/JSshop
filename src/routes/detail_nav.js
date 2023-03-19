@@ -8,21 +8,21 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 
 const TabContent = ({ tabState }) => {
-  const [fade, setFade] = useState("");
+  const [navFade, setNavFade] = useState("");
 
   useEffect(() => {
     const a = setTimeout(() => {
-      setFade("end");
+      setNavFade("end");
     }, 10);
 
     return () => {
       setTimeout(a);
-      setFade("");
+      setNavFade("");
     };
   }, [tabState]);
 
   return (
-    <div className={`start ${fade}`}>
+    <div className={`start ${navFade}`}>
       {[<div>버튼1</div>, <div>버튼2</div>, <div>버튼3</div>][tabState]}
     </div>
   );
