@@ -8,22 +8,26 @@ import Col from "react-bootstrap/Col";
 import { useEffect, useState } from "react";
 
 const TabContent = ({ tabState }) => {
-  const [navFade, setNavFade] = useState("");
+  const [tabFade, setTabFade] = useState("");
 
   useEffect(() => {
     const a = setTimeout(() => {
-      setNavFade("end");
+      setTabFade("end");
     }, 10);
 
     return () => {
       setTimeout(a);
-      setNavFade("");
+      setTabFade("");
     };
   }, [tabState]);
 
   return (
-    <div className={`start ${navFade}`}>
-      {[<div>버튼1</div>, <div>버튼2</div>, <div>버튼3</div>][tabState]}
+    <div className={`start ${tabFade}`}>
+      {
+        [<div>상세설명인것</div>, <div>리뷰인것</div>, <div>Q&A인것</div>][
+          tabState
+        ]
+      }
     </div>
   );
 };
@@ -42,7 +46,7 @@ function Detail_Nav() {
                 setTabState(0);
               }}
             >
-              Button1
+              상세정보
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -52,7 +56,7 @@ function Detail_Nav() {
                 setTabState(1);
               }}
             >
-              Button2
+              리뷰
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -62,7 +66,7 @@ function Detail_Nav() {
                 setTabState(2);
               }}
             >
-              Button3
+              Q&A
             </Nav.Link>
           </Nav.Item>
         </Nav>

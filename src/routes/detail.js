@@ -75,25 +75,33 @@ function Detail({ shoes, alertGridStyle }) {
 
   return (
     <Container className={`start ${fade}`}>
-      <>
-        <div style={{ height: "100px", margin: "30px 0 0 0" }}>
-          {alert === true ? (
-            <Alert variant={"success"}>
-              {`${findId.title} 상품을 장바구니에 담았어요!!`}
-            </Alert>
-          ) : null}
-          {alert2 === true ? (
-            <Alert variant={"success"}>
-              {`${findId.title} 상품 주문이 완료되었어요!!`}
-            </Alert>
-          ) : null}
-          {textAlert === true ? (
-            <Alert variant={"danger"}>{`입력란에 숫자만 입력해주세요!!`}</Alert>
-          ) : null}
-        </div>
-      </>
       <Row>
         <Col className={`${alertGridStyle}`}>
+          <div
+            style={{
+              position: "fixed",
+              left: "50%",
+              transform: "translate(-50%, 0)",
+              width: "90%",
+              marginTop: "10px",
+            }}
+          >
+            {alert === true ? (
+              <Alert variant={"success"}>
+                {`${findId.title} 상품을 장바구니에 담았어요!!`}
+              </Alert>
+            ) : null}
+            {alert2 === true ? (
+              <Alert variant={"success"}>
+                {`${findId.title} 상품 주문이 완료되었어요!!`}
+              </Alert>
+            ) : null}
+            {textAlert === true ? (
+              <Alert
+                variant={"danger"}
+              >{`입력란에 숫자만 입력해주세요!!`}</Alert>
+            ) : null}
+          </div>
           <img
             src={process.env.PUBLIC_URL + `/img/shoes${id}.jpg`}
             alt={`shoes${id}.jpg`}
