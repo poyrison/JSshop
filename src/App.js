@@ -6,7 +6,7 @@ import axios from "axios";
 
 import data from "./data.js";
 import Items from "./items.js";
-import Detail from "./routes/Detail.js";
+import Detail from "./routes/detail.js";
 import Cart from "./routes/Cart.js";
 
 import Nav from "react-bootstrap/Nav";

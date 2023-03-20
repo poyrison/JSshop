@@ -11,6 +11,7 @@ function Cart() {
           <th>No</th>
           <th>상품명</th>
           <th>수량</th>
+          <th>가격</th>
           <th>변경하기</th>
         </tr>
       </thead>
@@ -30,6 +31,7 @@ function Cart() {
                 {ITEM[i].name}
               </td>
               <td>{ITEM[i].count}</td>
+              <td>{ITEM[i].price}</td>
               <td>변경</td>
             </tr>
           );

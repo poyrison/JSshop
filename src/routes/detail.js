@@ -1,4 +1,4 @@
-import Detail_Nav from "./Detail_nav";
+import Detail_Nav from "./detail_nav";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
