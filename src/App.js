@@ -6,7 +6,8 @@ import axios from "axios";
 
 import data from "./data.js";
 import Items from "./items.js";
-import Detail from "./routes/detail.js";
+import Detail from "./routes/Detail.js";
+import Cart from "./routes/Cart.js";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -108,11 +109,7 @@ function App() {
                         src={process.env.PUBLIC_URL + `/img/home.png`}
                       />
                     </Nav.Link>
-                    <Nav.Link
-                      className="navIcon"
-                      title="장바구니"
-                      href="https://github.com/poyrison/react_shop/"
-                    >
+                    <Nav.Link className="navIcon" title="장바구니" href="/cart">
                       <img
                         style={{ height: "28px", width: "30px" }}
                         src={process.env.PUBLIC_URL + `/img/cart.png`}
@@ -213,6 +210,7 @@ function App() {
             />
           }
         />
+        <Route path="/cart" element={<Cart />} />
 
         {/* {404 에러 페이지} */}
         <Route

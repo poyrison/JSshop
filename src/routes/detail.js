@@ -1,4 +1,4 @@
-import Detail_Nav from "./detail_nav";
+import Detail_Nav from "./Detail_nav";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -74,7 +74,7 @@ function Detail({ shoes, alertGridStyle }) {
   }, []);
 
   return (
-    <Container className={`start ${fade}`}>
+    <Container>
       <Row>
         <Col className={`${alertGridStyle}`}>
           <div
@@ -103,6 +103,7 @@ function Detail({ shoes, alertGridStyle }) {
             ) : null}
           </div>
           <img
+            className={`start ${fade}`}
             src={process.env.PUBLIC_URL + `/img/shoes${id}.jpg`}
             alt={`shoes${id}.jpg`}
             width="100%"
