@@ -19,7 +19,16 @@ function Cart() {
           return (
             <tr key={i}>
               <td>{i + 1}</td>
-              <td>{ITEM[i].name}</td>
+              <td>
+                <div>
+                  <img
+                    src={process.env.PUBLIC_URL + `/img/shoes${i}.jpg`}
+                    height="60px"
+                    width="90px"
+                  />
+                </div>
+                {ITEM[i].name}
+              </td>
               <td>{ITEM[i].count}</td>
               <td>변경</td>
             </tr>
