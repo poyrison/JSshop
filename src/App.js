@@ -99,7 +99,13 @@ function App() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link title="홈으로" href="/" className="navIcon">
+                    <Nav.Link
+                      title="홈으로"
+                      className="navIcon"
+                      onClick={() => {
+                        navigate("/");
+                      }}
+                    >
                       <img
                         style={{
                           height: "30px",
@@ -109,7 +115,13 @@ function App() {
                         src={process.env.PUBLIC_URL + `/img/home.png`}
                       />
                     </Nav.Link>
-                    <Nav.Link className="navIcon" title="장바구니" href="/cart">
+                    <Nav.Link
+                      className="navIcon"
+                      title="장바구니"
+                      onClick={() => {
+                        navigate("/cart");
+                      }}
+                    >
                       <img
                         style={{ height: "28px", width: "30px" }}
                         src={process.env.PUBLIC_URL + `/img/cart.png`}

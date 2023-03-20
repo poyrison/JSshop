@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 
 function Cart() {
   const ITEM = useSelector((state) => state.item);
-  console.log(ITEM);
 
   return (
     <Table striped bordered hover>
