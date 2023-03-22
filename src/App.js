@@ -1,12 +1,13 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
 
 import data from "./data.js";
 import Items from "./items.js";
-import Detail from "./routes/detail.js";
+import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
 
 import Nav from "react-bootstrap/Nav";
@@ -37,6 +38,8 @@ function App() {
   const [dataClick, setDataClick] = useState(2);
   const [loadingIcon, setLoadingIcon] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
+
+  const BASKET_ITEM = useSelector((state) => state.item);
 
   /** grid 클래스명 */
   const gridStyle = "col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4";
@@ -126,6 +129,7 @@ function App() {
                         style={{ height: "28px", width: "30px" }}
                         src={process.env.PUBLIC_URL + `/img/cart.png`}
                       />
+                      <div className="basketItemsNum">{BASKET_ITEM.length}</div>
                     </Nav.Link>
                     <NavDropdown
                       title="Dropdown"

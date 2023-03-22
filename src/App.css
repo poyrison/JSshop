@@ -40,3 +40,41 @@
   align-items: center;
   justify-content: center;
 }
+
+.basketItemsNum {
+  position: fixed;
+  margin-left: -10px;
+  padding: 2px 7px;
+  border-radius: 30px;
+  background-color: red;
+  color: white;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.total_amount {
+  margin-top: 30px;
+}
+
+.itemNumBtn {
+  margin: 0 10px;
+}
+
+.empty_cart {
+  margin: 120px auto;
+  vertical-align: middle;
+}
+
+.table_body {
+  min-width: 740px;
+  margin: 10px;
+}
+
+.cart_list_item {
+  vertical-align: middle;
+}
+
+.cart_item_img {
+  margin-right: 10px;
+}

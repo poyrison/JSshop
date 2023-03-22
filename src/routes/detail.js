@@ -1,4 +1,5 @@
-import Detail_Nav from "./detail_nav";
+import Detail_Nav from "./Detail_nav";
+import { handleCartAdd, plusAmount } from "./../store.js";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -9,6 +10,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
 import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -23,7 +25,11 @@ function Detail({ shoes, alertGridStyle }) {
   const [text, setText] = useState("");
   const [fade, setFade] = useState("");
   const { id } = useParams();
+
+  const TOTAL_AMOUNT = useSelector((state) => state.totalAmount);
   const findId = shoes.find((item) => item.id == id);
+
+  const dispatch = useDispatch();
 
   const onlyNumCheck = () => {
     if (/[^0-9]+/.test(text)) {
@@ -91,11 +97,6 @@ function Detail({ shoes, alertGridStyle }) {
                 {`${findId.title} 상품을 장바구니에 담았어요!!`}
               </Alert>
             ) : null}
-            {alert2 === true ? (
-              <Alert variant={"success"}>
-                {`${findId.title} 상품 주문이 완료되었어요!!`}
-              </Alert>
-            ) : null}
             {textAlert === true ? (
               <Alert
                 variant={"danger"}
@@ -140,6 +141,18 @@ function Detail({ shoes, alertGridStyle }) {
           </InputGroup>
           <Button
             onClick={() => {
+              console.log(findId.price);
+              console.log(TOTAL_AMOUNT);
+              dispatch(
+                handleCartAdd({
+                  id: findId.id,
+                  name: findId.title,
+                  price: findId.price,
+                  count: 1,
+                }),
+                plusAmount(findId.price)
+              );
+
               setAlert(true);
               setAlert2(false);
             }}
@@ -150,20 +163,6 @@ function Detail({ shoes, alertGridStyle }) {
             <img
               style={{ height: "25px", width: "25px" }}
               src={process.env.PUBLIC_URL + `/img/put_in.png`}
-            />
-          </Button>
-          <Button
-            title="주문하기"
-            style={{ marginRight: "10px", padding: "5px 31px" }}
-            onClick={() => {
-              setAlert2(true);
-              setAlert(false);
-            }}
-            className="btn btn-success"
-          >
-            <img
-              style={{ height: "25px", width: "25px" }}
-              src={process.env.PUBLIC_URL + `/img/delivery.png`}
             />
           </Button>
         </Col>

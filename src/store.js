@@ -2,18 +2,54 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const item = createSlice({
   name: "item",
-  initialState: [
-    { id: 0, name: "White and Black", count: 2, price: 110000 },
-    { id: 1, name: "Red Knit", count: 1, price: 120000 },
-    { id: 2, name: "Grey Yordan", count: 3, price: 130000 },
-    { id: 3, name: "Flowey", count: 1, price: 140000 },
-    { id: 4, name: "Baby shoes", count: 2, price: 150000 },
-    { id: 4, name: "Red Herring", count: 5, price: 180000 },
-  ],
+  initialState: [],
+  reducers: {
+    changeCountPlus(state, action) {
+      const num = state.findIndex((e) => {
+        return e.id === action.payload;
+      });
+      state[num].count++;
+    },
+    changeCountMinus(state, action) {
+      const num = state.findIndex((e) => {
+        return e.id === action.payload;
+      });
+      state[num].count--;
+    },
+    handleCartAdd(state, action) {
+      state.push(action.payload);
+    },
+    handleCartDelete(state, action) {
+      state.splice(action.payload, 1);
+    },
+  },
 });
+
+const totalAmount = createSlice({
+  name: "totalAmount",
+  initialState: 0,
+  reducers: {
+    plusAmount(state, action) {
+      return state + action.payload;
+    },
+    minusAmount(state, action) {
+      return state - action.payload;
+    },
+  },
+});
+
+export const {
+  changeCountPlus,
+  changeCountMinus,
+  handleCartAdd,
+  handleCartDelete,
+} = item.actions;
+
+export const { plusAmount, minusAmount } = totalAmount.actions;
 
 export default configureStore({
   reducer: {
     item: item.reducer,
+    totalAmount: totalAmount.reducer,
   },
 });
