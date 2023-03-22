@@ -1,5 +1,5 @@
 import Detail_Nav from "./Detail_nav";
-import { handleCartAdd, plusAmount } from "./../store.js";
+import { handleCartAdd, plusAmount } from "../store.js";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
