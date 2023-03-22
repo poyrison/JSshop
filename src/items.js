@@ -23,7 +23,7 @@ function Items({ shoes, gridStyle, navigate }) {
                 alt={`${shoes[i].title}`}
                 title={`${shoes[i].title}`}
               />
-              <h4>{shoes[i].title}</h4>
+              <h4 style={{ marginTop: "20px" }}>{shoes[i].title}</h4>
               <p>{shoes[i].content}</p>
               <p>price: {shoes[i].price}</p>
             </Col>

@@ -77,15 +77,7 @@ function App() {
                 }}
                 style={{ cursor: "pointer" }}
               >
-                <img
-                  src="https://camo.githubusercontent.com/cbb0ed4ed73eb0bdf880019fe4fd13e0e0b0812435f11ac0d920c8f523a8d8d0/68747470733a2f2f74656368737461636b2d67656e657261746f722e76657263656c2e6170702f72656163742d69636f6e2e737667"
-                  alt="icon"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                  data-canonical-src="https://techstack-generator.vercel.app/react-icon.svg"
-                />
-                React Shop
+                JS˙s Shop
               </Navbar.Brand>
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
@@ -129,7 +121,9 @@ function App() {
                         style={{ height: "28px", width: "30px" }}
                         src={process.env.PUBLIC_URL + `/img/cart.png`}
                       />
-                      <div className="basketItemsNum">{BASKET_ITEM.length}</div>
+                      {BASKET_ITEM.length == 0 ? null : (
+                        <div className="cartItemsNum">{BASKET_ITEM.length}</div>
+                      )}
                     </Nav.Link>
                     <NavDropdown
                       title="Dropdown"
@@ -187,7 +181,6 @@ function App() {
                   alt="icon"
                   width="100"
                   height="100"
-                  data-canonical-src="https://techstack-generator.vercel.app/react-icon.svg"
                 />
               ) : null}
               <Items shoes={shoes} navigate={navigate} gridStyle={gridStyle} />

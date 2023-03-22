@@ -7,6 +7,7 @@ import {
   changeCountMinus,
   handleCartDelete,
   minusAmount,
+  plusAmount,
 } from "./../store.js";
 
 function Cart() {
@@ -29,7 +30,7 @@ function Cart() {
           </tr>
         </thead>
         <tbody>
-          {ITEM.length == 0 ? ( // 장바구니 안의 상품의 개수가 0개라면 아래 테이블 보여주기
+          {ITEM.length == 0 ? ( // 장바구니 안의 상품의 개수가 0개일 때 보여 테이블
             <tr>
               <td colSpan={5}>
                 <p className="empty_cart">장바구니에 담긴 상품이 없습니다.</p>
@@ -40,19 +41,28 @@ function Cart() {
             <tr key={i} className="cart_list_item">
               <td>{i + 1}</td>
               <td>
-                <div
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    navigate(`/detail/${ITEM[i].id}`);
-                  }}
-                >
-                  <img
-                    className="cart_item_img"
-                    src={process.env.PUBLIC_URL + `/img/shoes${ITEM[i].id}.jpg`}
-                    height="60px"
-                    width="90px"
-                  />
-                  <b>{ITEM[i].name}</b>
+                <div>
+                  <div className="cart_item_box">
+                    <img
+                      onClick={() => {
+                        navigate(`/detail/${ITEM[i].id}`);
+                      }}
+                      id="cart_item_img"
+                      src={
+                        process.env.PUBLIC_URL + `/img/shoes${ITEM[i].id}.jpg`
+                      }
+                    />
+                  </div>
+                  <div className="cart_item_box">
+                    <p
+                      id="item_name"
+                      onClick={() => {
+                        navigate(`/detail/${ITEM[i].id}`);
+                      }}
+                    >
+                      {ITEM[i].name}
+                    </p>
+                  </div>
                 </div>
               </td>
               <td>{(ITEM[i].price * ITEM[i].count).toLocaleString()}</td>
@@ -62,9 +72,16 @@ function Cart() {
                     variant="outline-dark"
                     className="itemNumBtn itemNumMinus"
                     onClick={() => {
-                      ITEM[i].count <= 1
-                        ? alert("더 이상 수량을 줄일 수 없습니다.")
-                        : dispatch(changeCountMinus(ITEM[i].id));
+                      {
+                        ITEM[i].count <= 1
+                          ? alert("더 이상 수량을 줄일 수 없습니다.")
+                          : dispatch(changeCountMinus(ITEM[i].id));
+                      }
+                      {
+                        ITEM[i].count <= 1
+                          ? dispatch(minusAmount(0))
+                          : dispatch(minusAmount(ITEM[i].price));
+                      }
                     }}
                   >
                     -
@@ -75,6 +92,7 @@ function Cart() {
                     className=" itemNumBtn itemNumPlus"
                     onClick={() => {
                       dispatch(changeCountPlus(ITEM[i].id));
+                      dispatch(plusAmount(ITEM[i].price));
                     }}
                   >
                     +
@@ -86,10 +104,8 @@ function Cart() {
                   variant="danger"
                   className="cartDeleteBtn"
                   onClick={() => {
-                    console.log(ITEM[i].price);
-                    console.log(TOTAL_AMOUNT);
                     dispatch(handleCartDelete(i));
-                    dispatch(minusAmount(ITEM[i].price));
+                    dispatch(minusAmount(ITEM[i].price * ITEM[i].count));
                   }}
                 >
                   삭제하기
@@ -100,7 +116,7 @@ function Cart() {
         </tbody>
       </Table>
       <h5 className="total_amount">
-        최종 결재 금액: {TOTAL_AMOUNT.toLocaleString()}원
+        최종 결제 금액: {TOTAL_AMOUNT.toLocaleString()}원
       </h5>
     </div>
   );

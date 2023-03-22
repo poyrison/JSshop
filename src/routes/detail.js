@@ -1,5 +1,5 @@
 import Detail_Nav from "./Detail_nav";
-import { handleCartAdd, plusAmount } from "../store.js";
+import { handleCartAdd, plusAmount, cartItemOverlap } from "../store.js";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -92,16 +92,17 @@ function Detail({ shoes, alertGridStyle }) {
               marginTop: "10px",
             }}
           >
-            {alert === true ? (
+            {alert === true && (
+              // && 왼쪽값이 truthy하다면 오른쪽 리턴, && 왼쪽값이 falsy하다면 왼쪽 리턴
               <Alert variant={"success"}>
                 {`${findId.title} 상품을 장바구니에 담았어요!!`}
               </Alert>
-            ) : null}
-            {textAlert === true ? (
+            )}
+            {textAlert === true && (
               <Alert
                 variant={"danger"}
               >{`입력란에 숫자만 입력해주세요!!`}</Alert>
-            ) : null}
+            )}
           </div>
           <img
             className={`start ${fade}`}
@@ -141,18 +142,16 @@ function Detail({ shoes, alertGridStyle }) {
           </InputGroup>
           <Button
             onClick={() => {
-              console.log(findId.price);
-              console.log(TOTAL_AMOUNT);
               dispatch(
                 handleCartAdd({
                   id: findId.id,
                   name: findId.title,
                   price: findId.price,
                   count: 1,
-                }),
-                plusAmount(findId.price)
+                })
               );
-
+              dispatch(plusAmount(findId.price));
+              dispatch(cartItemOverlap(findId.id));
               setAlert(true);
               setAlert2(false);
             }}
