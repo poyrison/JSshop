@@ -22,15 +22,11 @@ const item = createSlice({
     handleCartDelete(state, action) {
       state.splice(action.payload, 1);
     },
-    cartItemOverlap(state, action) {
-      // 장바구니에 중복된 아이템이 있다면 새로 추가하지않고 개수만 추가
-      const num = state.findIndex((e) => {
-        return e.id === action.payload;
-      });
-      if (state[num].id == item[num].id) {
-        state[num].count++;
-      }
-    },
+    // cartItemOverlap(state, action) {
+    //   // 장바구니에 중복된 아이템이 있다면 새로 추가하지않고 개수만 추가
+    //   const num = state.filter((e) => action.payload);
+    //   state[num].count++;
+    // },
   },
 });
 
@@ -42,7 +38,7 @@ const totalAmount = createSlice({
       return state + action.payload;
     },
     minusAmount(state, action) {
-      return state <= 0 ? state - 0 : state - action.payload;
+      return state >= 0 && state - action.payload;
     },
   },
 });

@@ -26,7 +26,6 @@ function Detail({ shoes, alertGridStyle }) {
   const [fade, setFade] = useState("");
   const { id } = useParams();
 
-  const TOTAL_AMOUNT = useSelector((state) => state.totalAmount);
   const findId = shoes.find((item) => item.id == id);
 
   const dispatch = useDispatch();
@@ -151,7 +150,7 @@ function Detail({ shoes, alertGridStyle }) {
                 })
               );
               dispatch(plusAmount(findId.price));
-              dispatch(cartItemOverlap(findId.id));
+              // dispatch(cartItemOverlap(findId));
               setAlert(true);
               setAlert2(false);
             }}
