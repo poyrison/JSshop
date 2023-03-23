@@ -25,7 +25,7 @@ function Items({ shoes, gridStyle, navigate }) {
               />
               <h4 style={{ marginTop: "20px" }}>{shoes[i].title}</h4>
               <p>{shoes[i].content}</p>
-              <p>price: {shoes[i].price}</p>
+              <p>{shoes[i].price.toLocaleString()}원</p>
             </Col>
           );
         })}

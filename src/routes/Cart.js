@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
+import Button_b from "react-bootstrap/Button";
+import Button_m from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -68,7 +69,7 @@ function Cart() {
               <td>{(ITEM[i].price * ITEM[i].count).toLocaleString()}</td>
               <td>
                 <div>
-                  <Button
+                  <Button_b
                     variant="outline-dark"
                     className="itemNumBtn itemNumMinus"
                     onClick={() => {
@@ -85,9 +86,9 @@ function Cart() {
                     }}
                   >
                     -
-                  </Button>
+                  </Button_b>
                   {ITEM[i].count}
-                  <Button
+                  <Button_b
                     variant="outline-dark"
                     className=" itemNumBtn itemNumPlus"
                     onClick={() => {
@@ -96,12 +97,14 @@ function Cart() {
                     }}
                   >
                     +
-                  </Button>
+                  </Button_b>
                 </div>
               </td>
               <td>
-                <Button
-                  variant="danger"
+                <Button_m
+                  // variant="danger"
+                  variant="outlined"
+                  color="error"
                   className="cartDeleteBtn"
                   onClick={() => {
                     dispatch(handleCartDelete(i));
@@ -109,7 +112,7 @@ function Cart() {
                   }}
                 >
                   삭제하기
-                </Button>
+                </Button_m>
               </td>
             </tr>
           ))}
