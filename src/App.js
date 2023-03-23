@@ -227,16 +227,10 @@ function App() {
           element={
             <>
               <div className="err-page">
-                <div
-                  style={{
-                    fontSize: "40px",
-                    marginBottom: "15px",
-                  }}
-                >
-                  ⚠
-                </div>
-                <h1>알 수 없는 페이지입니다.</h1>
+                <div className="err-page-child">⚠</div>
+                <h1 className="err-page-child">알 수 없는 페이지입니다.</h1>
                 <Button
+                  className="err-page-child"
                   onClick={() => {
                     navigate(-1);
                   }}
