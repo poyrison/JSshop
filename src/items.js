@@ -19,6 +19,7 @@ function Items({ shoes, gridStyle, navigate }) {
               <img
                 // public 폴더에 img를 두고 사용할 때의 권장 방법
                 src={process.env.PUBLIC_URL + `/img/shoes${i}.jpg`}
+                placeholder-background="red"
                 alt={`${shoes[i].title}`}
                 title={`${shoes[i].title}`}
                 className="item"

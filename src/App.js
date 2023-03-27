@@ -171,18 +171,21 @@ function App() {
             <>
               <Carousel className="main-carousel">
                 <Carousel.Item>
-                  <div className="main-bg" />
+                  <div id="bg1" className="bg-img" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <div className="main-bg" />
+                  <div id="bg2" className="bg-img" />
                 </Carousel.Item>
                 <Carousel.Item>
-                  <div className="main-bg" />
+                  <div id="bg3" className="bg-img" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div id="bg4" className="bg-img" />
                 </Carousel.Item>
               </Carousel>
               <Recent_item useNavigate={useNavigate} />
               <MoreBtnAlert>
-                {textAlert === true ? (
+                {textAlert === true && (
                   <Alert_b
                     variant={"warning"}
                     className={`start ${alertFadeEnd}`}
@@ -191,7 +194,7 @@ function App() {
                     <Alert_icon />
                     <b>{`마지막 상품입니다.`}</b>
                   </Alert_b>
-                ) : null}
+                )}
               </MoreBtnAlert>
               <Backdrop
                 sx={{
@@ -199,6 +202,7 @@ function App() {
                   zIndex: (theme) => theme.zIndex.drawer + 1,
                 }}
                 open={loadingIcon}
+                className="backdrop"
               >
                 <CircularProgress color="inherit" />
               </Backdrop>

@@ -2,7 +2,7 @@ function Recent_item({ useNavigate }) {
   const navigate = useNavigate();
   return (
     <>
-      <div className="recent-item-box">
+      <div className="recent-box">
         <p
           className="recent-title"
           id="recent-title-cart"
@@ -10,16 +10,19 @@ function Recent_item({ useNavigate }) {
             navigate("/cart");
           }}
         >
-          CART <div id="recent-title-cart-num">0</div>
+          CART <span id="recent-title-cart-num">1</span>
         </p>
         <p className="recent-title">최근본상품</p>
+        <div className="recent-item-box">
+          <img
+            className="recent-item"
+            src={process.env.PUBLIC_URL + "/img/shoes0.jpg"}
+            onClick={() => {
+              navigate("/detail/0");
+            }}
+          />
+        </div>
       </div>
-      {/* <img
-          className="recent-item"
-          src={process.env.PUBLIC_URL + `/img/shoes0.jpg`}
-        >
-          1
-        </img> */}
     </>
   );
 }
