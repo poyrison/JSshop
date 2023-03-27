@@ -9,21 +9,25 @@ import data from "./data.js";
 import Items from "./items.js";
 import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
+import Alert_icon from "./routes/Alert_icon.js";
+import Recent_item from "./routes/Recent_item.js";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Alert from "react-bootstrap/Alert";
-import Button from "react-bootstrap/Button";
+import Alert_b from "react-bootstrap/Alert";
+import Button_b from "react-bootstrap/Button";
+import Carousel from "react-bootstrap/Carousel";
+
+import Button_m from "@mui/material/Button";
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const MoreBtn = styled.button`
-  border-radius: 5px 5px 25px 25px;
+  border: 1px solid;
   width: 200px;
   margin-bottom: 30px;
 `;
@@ -31,8 +35,9 @@ const MoreBtn = styled.button`
 const MoreBtnAlert = styled.div`
   width: 50%;
   position: fixed;
+  display: flex;
   left: 50%;
-  top: 50%;
+  top: 45%;
   transform: translate(-50%, 0);
 `;
 
@@ -41,6 +46,7 @@ function App() {
   const [dataClick, setDataClick] = useState(2);
   const [loadingIcon, setLoadingIcon] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
+  const [alertFadeEnd, setAlertFadeEnd] = useState("");
 
   const BASKET_ITEM = useSelector((state) => state.item);
 
@@ -54,11 +60,24 @@ function App() {
   useEffect(() => {
     const alertTimer = setTimeout(() => {
       setTextAlert(false);
-    }, 2000);
+    }, 3000);
     return () => {
       clearTimeout(alertTimer);
     };
   }, [textAlert]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAlertFadeEnd("");
+    }, 2000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [alertFadeEnd]);
+
+  useEffect(() => {
+    localStorage.setItem("watched", JSON.stringify([]));
+  });
 
   return (
     <div className="App">
@@ -78,7 +97,7 @@ function App() {
                 onClick={() => {
                   navigate("/");
                 }}
-                style={{ cursor: "pointer" }}
+                style={{ cursor: "pointer", marginLeft: "15px" }}
               >
                 JS˙s Shop
               </Navbar.Brand>
@@ -128,21 +147,6 @@ function App() {
                         <div className="cartItemsNum">{BASKET_ITEM.length}</div>
                       )}
                     </Nav.Link>
-                    <NavDropdown
-                      title="Dropdown"
-                      id={`offcanvasNavbarDropdown-expand-${expand}`}
-                    >
-                      <NavDropdown.Item href="#action3">
-                        Action
-                      </NavDropdown.Item>
-                      <NavDropdown.Item href="#action4">
-                        Another action
-                      </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="#action5">
-                        Something else here
-                      </NavDropdown.Item>
-                    </NavDropdown>
                   </Nav>
                   <Form className="d-flex">
                     <Form.Control
@@ -151,7 +155,7 @@ function App() {
                       className="me-2"
                       aria-label="Search"
                     />
-                    <Button variant="outline-success">Search</Button>
+                    <Button_b variant="outline-success">Search</Button_b>
                   </Form>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
@@ -165,12 +169,28 @@ function App() {
           path="/"
           element={
             <>
-              <div className="main-bg" />
+              <Carousel className="main-carousel">
+                <Carousel.Item>
+                  <div className="main-bg" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className="main-bg" />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <div className="main-bg" />
+                </Carousel.Item>
+              </Carousel>
+              <Recent_item useNavigate={useNavigate} />
               <MoreBtnAlert>
                 {textAlert === true ? (
-                  <Alert variant={"warning"}>
+                  <Alert_b
+                    variant={"warning"}
+                    className={`start ${alertFadeEnd}`}
+                    style={{ flex: 1 }}
+                  >
+                    <Alert_icon />
                     <b>{`마지막 상품입니다.`}</b>
-                  </Alert>
+                  </Alert_b>
                 ) : null}
               </MoreBtnAlert>
               <Backdrop
@@ -183,7 +203,9 @@ function App() {
                 <CircularProgress color="inherit" />
               </Backdrop>
               <Items shoes={shoes} navigate={navigate} gridStyle={gridStyle} />
-              <MoreBtn
+              <Button_b
+                id="main-more-btn"
+                variant="outline-dark"
                 onClick={() => {
                   setLoadingIcon(true);
                   setDataClick(dataClick + 1);
@@ -194,16 +216,23 @@ function App() {
                     .then((result) => {
                       const newShoes = [...shoes, ...result.data];
                       setShoes(newShoes);
-                      setLoadingIcon(false);
+                      setTimeout(() => {
+                        setLoadingIcon(false);
+                      }, 300);
                     })
                     .catch(() => {
-                      setLoadingIcon(false);
+                      setTimeout(() => {
+                        setLoadingIcon(false);
+                      }, 300);
                       setTextAlert(true);
+                      setTimeout(() => {
+                        setAlertFadeEnd("end");
+                      }, 10);
                     });
                 }}
               >
-                More
-              </MoreBtn>
+                펼쳐보기
+              </Button_b>
             </>
           }
         />
@@ -228,7 +257,7 @@ function App() {
               <div className="err-page">
                 <div className="err-page-child">⚠</div>
                 <h1 className="err-page-child">알 수 없는 페이지입니다.</h1>
-                <Button
+                <Button_b
                   className="err-page-child"
                   onClick={() => {
                     navigate(-1);
@@ -236,7 +265,7 @@ function App() {
                   variant="info"
                 >
                   이전 페이지로
-                </Button>
+                </Button_b>
               </div>
             </>
           }

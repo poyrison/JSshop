@@ -22,7 +22,7 @@ const TabContent = ({ tabState }) => {
   }, [tabState]);
 
   return (
-    <div className={`start ${tabFade}`}>
+    <div className={`start ${tabFade} detail-tab`}>
       {
         [<div>상세설명인것</div>, <div>리뷰인것</div>, <div>Q&A인것</div>][
           tabState

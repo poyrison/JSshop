@@ -1,6 +1,5 @@
 import Table from "react-bootstrap/Table";
 import Button_b from "react-bootstrap/Button";
-import Button_m from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -101,9 +100,9 @@ function Cart() {
                 </div>
               </td>
               <td>
-                <Button_m
-                  // variant="danger"
-                  variant="outlined"
+                <Button_b
+                  variant="outline-danger"
+                  // variant="outlined"
                   color="error"
                   className="cartDeleteBtn"
                   onClick={() => {
@@ -112,7 +111,7 @@ function Cart() {
                   }}
                 >
                   삭제하기
-                </Button_m>
+                </Button_b>
               </td>
             </tr>
           ))}
