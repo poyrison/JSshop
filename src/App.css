@@ -19,21 +19,21 @@ body {
 
 .navbar {
   text-align: left;
-  z-index: 1000;
+  z-index: 3;
 }
 
 .backdrop {
-  z-index: 1001;
+  z-index: 4;
 }
 
 .recent-box {
   position: fixed;
   left: 91%;
-  top: 65%;
+  top: 60%;
   border: 1px solid #dcdcdc;
   background-color: #eee;
   display: flex;
-  z-index: 1000;
+  z-index: 2;
   flex-direction: column;
 }
 
@@ -41,6 +41,7 @@ body {
   padding: 5px 10px;
   margin: 0;
   font-size: 12px;
+  width: 90px;
 }
 
 #recent-title-cart {
@@ -65,8 +66,25 @@ body {
 
 .recent-item {
   cursor: pointer;
-  width: 70px;
+  width: 80px;
   height: 70px;
+}
+
+.recent-item-title {
+  margin: 0;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+#recent-box-top-btn {
+  font-size: 13px;
+  cursor: pointer;
+  background-color: #888181;
+  color: white;
+}
+
+#recent-box-top-btn {
+  text-decoration: none;
 }
 
 .bg-img {

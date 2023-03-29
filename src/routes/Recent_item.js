@@ -1,4 +1,9 @@
+import { useSelector } from "react-redux";
+
 function Recent_item({ useNavigate }) {
+  const BASKET_ITEM = useSelector((state) => state.item);
+  const STORAGE_PLUS = useSelector((state) => state.storage);
+
   const navigate = useNavigate();
   return (
     <>
@@ -10,18 +15,28 @@ function Recent_item({ useNavigate }) {
             navigate("/cart");
           }}
         >
-          CART <span id="recent-title-cart-num">1</span>
+          CART <span id="recent-title-cart-num">{`${BASKET_ITEM.length}`}</span>
         </p>
         <p className="recent-title">최근본상품</p>
-        <div className="recent-item-box">
-          <img
-            className="recent-item"
-            src={process.env.PUBLIC_URL + "/img/shoes0.jpg"}
-            onClick={() => {
-              navigate("/detail/0");
-            }}
-          />
-        </div>
+        {STORAGE_PLUS.map((e, i) => {
+          return (
+            <div className="recent-item-box">
+              <img
+                className="recent-item"
+                src={
+                  process.env.PUBLIC_URL + `/img/shoes${STORAGE_PLUS[i].id}.jpg`
+                }
+                onClick={() => {
+                  navigate(`/detail/${STORAGE_PLUS[i].id}`);
+                }}
+              />
+              <p className="recent-item-title">{`${STORAGE_PLUS[i].title}`}</p>
+            </div>
+          );
+        })}
+        <a href="#" id="recent-box-top-btn">
+          <div id="recent-box-top-btn">TOP▲</div>
+        </a>
       </div>
     </>
   );

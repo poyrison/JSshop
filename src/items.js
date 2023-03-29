@@ -2,7 +2,14 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import { handleStorageItemPlus } from "./store.js";
+import { useDispatch, useSelector } from "react-redux";
+
 function Items({ shoes, gridStyle, navigate }) {
+  const STORAGE_PLUS = useSelector((state) => state.storage);
+
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <Row>
@@ -13,7 +20,14 @@ function Items({ shoes, gridStyle, navigate }) {
               key={i}
               className={`${gridStyle} itemLine`} //`itemLine ${grid}`
               onClick={() => {
+                console.log(STORAGE_PLUS);
                 navigate(`/detail/${i}`);
+                dispatch(
+                  handleStorageItemPlus({
+                    id: `${i}`,
+                    title: `${shoes[i].title}`,
+                  })
+                );
               }}
             >
               <img

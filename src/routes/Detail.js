@@ -1,5 +1,7 @@
 import Detail_Nav from "./Detail_nav";
 import Alert_icon from "./Alert_icon";
+import Recent_item from "../routes/Recent_item.js";
+import { useNavigate } from "react-router-dom";
 import { handleCartAdd, plusAmount, cartItemOverlap } from "../store.js";
 
 import Container from "react-bootstrap/Container";
@@ -26,6 +28,7 @@ function Detail({ shoes, alertGridStyle }) {
   const [alertFadeEnd, setAlertFadeEnd] = useState("");
   const { id } = useParams();
 
+  const navigate = useNavigate();
   const findId = shoes.find((item) => item.id == id);
 
   const dispatch = useDispatch();
@@ -58,6 +61,16 @@ function Detail({ shoes, alertGridStyle }) {
       clearTimeout(timer);
     };
   }, [alertFadeEnd]);
+
+  useEffect(() => {
+    let getItem = localStorage.getItem("watched");
+    getItem = JSON.parse(getItem);
+    getItem.push(findId.id);
+    getItem = new Set(getItem);
+    getItem = Array.from(getItem);
+
+    localStorage.setItem("watched", JSON.stringify(getItem));
+  }, []);
 
   return (
     <Container>
@@ -111,6 +124,7 @@ function Detail({ shoes, alertGridStyle }) {
               alt="put_in.png"
             />
           </Button_m>
+          <Recent_item useNavigate={useNavigate} />
         </Col>
         <Detail_Nav />
       </Row>

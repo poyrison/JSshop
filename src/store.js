@@ -43,6 +43,16 @@ const totalAmount = createSlice({
   },
 });
 
+const storage = createSlice({
+  name: "storage",
+  initialState: [],
+  reducers: {
+    handleStorageItemPlus(state, action) {
+      state.unshift(action.payload);
+    },
+  },
+});
+
 export const {
   changeCountPlus,
   changeCountMinus,
@@ -53,9 +63,12 @@ export const {
 
 export const { plusAmount, minusAmount } = totalAmount.actions;
 
+export const { handleStorageItemPlus } = storage.actions;
+
 export default configureStore({
   reducer: {
     item: item.reducer,
     totalAmount: totalAmount.reducer,
+    storage: storage.reducer,
   },
 });

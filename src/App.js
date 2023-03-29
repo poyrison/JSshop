@@ -21,8 +21,6 @@ import Alert_b from "react-bootstrap/Alert";
 import Button_b from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 
-import Button_m from "@mui/material/Button";
-
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -52,6 +50,7 @@ function App() {
 
   /** grid 클래스명 */
   const gridStyle = "col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4";
+  /** grid 클래스명 */
   const alertGridStyle = "col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6";
 
   // navigate(-1) 이전페이지, navigate(1) 이후페이지
@@ -74,10 +73,6 @@ function App() {
       clearTimeout(timer);
     };
   }, [alertFadeEnd]);
-
-  useEffect(() => {
-    localStorage.setItem("watched", JSON.stringify([]));
-  });
 
   return (
     <div className="App">
@@ -169,7 +164,7 @@ function App() {
           path="/"
           element={
             <>
-              <Carousel className="main-carousel">
+              <Carousel fade className="main-carousel">
                 <Carousel.Item>
                   <div id="bg1" className="bg-img" />
                 </Carousel.Item>
