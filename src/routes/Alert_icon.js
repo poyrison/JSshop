@@ -1,4 +1,4 @@
-function Alert_icon() {
+function Alert_Icon() {
   return (
     <>
       <svg
@@ -14,4 +14,4 @@ function Alert_icon() {
   );
 }
 
-export default Alert_icon;
+export default Alert_Icon;

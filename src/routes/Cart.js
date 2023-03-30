@@ -1,5 +1,5 @@
 import Table from "react-bootstrap/Table";
-import Button_b from "react-bootstrap/Button";
+import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -68,7 +68,7 @@ function Cart() {
               <td>{(ITEM[i].price * ITEM[i].count).toLocaleString()}</td>
               <td>
                 <div>
-                  <Button_b
+                  <Button
                     variant="outline-dark"
                     className="itemNumBtn itemNumMinus"
                     onClick={() => {
@@ -85,9 +85,9 @@ function Cart() {
                     }}
                   >
                     -
-                  </Button_b>
+                  </Button>
                   {ITEM[i].count}
-                  <Button_b
+                  <Button
                     variant="outline-dark"
                     className=" itemNumBtn itemNumPlus"
                     onClick={() => {
@@ -96,11 +96,11 @@ function Cart() {
                     }}
                   >
                     +
-                  </Button_b>
+                  </Button>
                 </div>
               </td>
               <td>
-                <Button_b
+                <Button
                   variant="outline-danger"
                   // variant="outlined"
                   color="error"
@@ -111,12 +111,15 @@ function Cart() {
                   }}
                 >
                   삭제하기
-                </Button_b>
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
+      <Button variant="dark" id="order-btn">
+        주문하기
+      </Button>
       <h5 className="total_amount">
         최종 결제 금액: {TOTAL_AMOUNT.toLocaleString()}원
       </h5>

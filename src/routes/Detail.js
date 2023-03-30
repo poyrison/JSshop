@@ -1,20 +1,19 @@
 import Detail_Nav from "./Detail_nav";
-import Alert_icon from "./Alert_icon";
-import Recent_item from "../routes/Recent_item.js";
+import Alert_Icon from "./Alert_Icon";
+import Recent_item from "./Recent_Item.js";
 import { useNavigate } from "react-router-dom";
-import { handleCartAdd, plusAmount, cartItemOverlap } from "../store.js";
+import { handleCartAdd, plusAmount } from "../store.js";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button_b from "react-bootstrap/Button";
-import Alert_b from "react-bootstrap/Alert";
+import Alert from "react-bootstrap/Alert";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import Button_m from "@mui/material/Button";
+import ButtonMUI from "@mui/material/Button";
 
 import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -28,7 +27,6 @@ function Detail({ shoes, alertGridStyle }) {
   const [alertFadeEnd, setAlertFadeEnd] = useState("");
   const { id } = useParams();
 
-  const navigate = useNavigate();
   const findId = shoes.find((item) => item.id == id);
 
   const dispatch = useDispatch();
@@ -63,13 +61,23 @@ function Detail({ shoes, alertGridStyle }) {
   }, [alertFadeEnd]);
 
   useEffect(() => {
-    let getItem = localStorage.getItem("watched");
-    getItem = JSON.parse(getItem);
-    getItem.push(findId.id);
-    getItem = new Set(getItem);
-    getItem = Array.from(getItem);
+    let getId = localStorage.getItem("watched-id");
+    let getTitle = localStorage.getItem("watched-title");
 
-    localStorage.setItem("watched", JSON.stringify(getItem));
+    getId = JSON.parse(getId);
+    getTitle = JSON.parse(getTitle);
+
+    getId.push(findId.id);
+    getTitle.push(findId.title);
+
+    getId = new Set(getId);
+    getTitle = new Set(getTitle);
+
+    getId = Array.from(getId);
+    getTitle = Array.from(getTitle);
+
+    localStorage.setItem("watched-id", JSON.stringify(getId));
+    localStorage.setItem("watched-title", JSON.stringify(getTitle));
   }, []);
 
   return (
@@ -77,10 +85,10 @@ function Detail({ shoes, alertGridStyle }) {
       <Row>
         <Col className={`${alertGridStyle}`}>
           <div className="detail-alert-area">
-            <Alert_b variant="success" className={`start ${alertFadeEnd}`}>
-              <Alert_icon />
+            <Alert variant="success" className={`start ${alertFadeEnd}`}>
+              <Alert_Icon />
               {`${findId.title} 상품을 장바구니에 담았어요!!`}
-            </Alert_b>
+            </Alert>
           </div>
           <img
             className={`start ${fade} detail-body`}
@@ -97,7 +105,7 @@ function Detail({ shoes, alertGridStyle }) {
             className="mb-3"
             style={{ width: "50%", marginLeft: "25%" }}
           ></InputGroup>
-          <Button_m
+          <ButtonMUI
             variant="contained"
             color="success"
             onClick={() => {
@@ -123,7 +131,7 @@ function Detail({ shoes, alertGridStyle }) {
               src={process.env.PUBLIC_URL + `/img/put_in.png`}
               alt="put_in.png"
             />
-          </Button_m>
+          </ButtonMUI>
           <Recent_item useNavigate={useNavigate} />
         </Col>
         <Detail_Nav />

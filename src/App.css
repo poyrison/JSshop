@@ -28,7 +28,7 @@ body {
 
 .recent-box {
   position: fixed;
-  left: 91%;
+  left: 90%;
   top: 60%;
   border: 1px solid #dcdcdc;
   background-color: #eee;
@@ -81,9 +81,6 @@ body {
   cursor: pointer;
   background-color: #888181;
   color: white;
-}
-
-#recent-box-top-btn {
   text-decoration: none;
 }
 
@@ -220,4 +217,9 @@ body {
 .cart_list_item,
 .cart_item_box {
   vertical-align: middle;
+}
+
+#order-btn {
+  padding: 10px 80px;
+  font-weight: bold;
 }

@@ -9,26 +9,20 @@ import data from "./data.js";
 import Items from "./items.js";
 import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
-import Alert_icon from "./routes/Alert_icon.js";
-import Recent_item from "./routes/Recent_item.js";
+import Alert_icon from "./routes/Alert_Icon.js";
+import Recent_Item from "./routes/Recent_Item.js";
 
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Alert_b from "react-bootstrap/Alert";
-import Button_b from "react-bootstrap/Button";
+import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 import Carousel from "react-bootstrap/Carousel";
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-
-const MoreBtn = styled.button`
-  border: 1px solid;
-  width: 200px;
-  margin-bottom: 30px;
-`;
 
 const MoreBtnAlert = styled.div`
   width: 50%;
@@ -73,6 +67,15 @@ function App() {
       clearTimeout(timer);
     };
   }, [alertFadeEnd]);
+
+  useEffect(() => {
+    // localStorage.setItem("...", JSON.stringify([])); - 데이터 추가
+    // localStorage.getItem("...", JSON.stringify([])); - 데이터 조회
+    // localStorage.removeItem("...", JSON.stringify([])); - 데이터 삭제
+
+    localStorage.setItem("watched-id", JSON.stringify([]));
+    localStorage.setItem("watched-title", JSON.stringify([]));
+  }, []);
 
   return (
     <div className="App">
@@ -150,7 +153,7 @@ function App() {
                       className="me-2"
                       aria-label="Search"
                     />
-                    <Button_b variant="outline-success">Search</Button_b>
+                    <Button variant="outline-success">Search</Button>
                   </Form>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
@@ -178,17 +181,17 @@ function App() {
                   <div id="bg4" className="bg-img" />
                 </Carousel.Item>
               </Carousel>
-              <Recent_item useNavigate={useNavigate} />
+              <Recent_Item useNavigate={useNavigate} />
               <MoreBtnAlert>
                 {textAlert === true && (
-                  <Alert_b
+                  <Alert
                     variant={"warning"}
                     className={`start ${alertFadeEnd}`}
                     style={{ flex: 1 }}
                   >
                     <Alert_icon />
                     <b>{`마지막 상품입니다.`}</b>
-                  </Alert_b>
+                  </Alert>
                 )}
               </MoreBtnAlert>
               <Backdrop
@@ -202,7 +205,7 @@ function App() {
                 <CircularProgress color="inherit" />
               </Backdrop>
               <Items shoes={shoes} navigate={navigate} gridStyle={gridStyle} />
-              <Button_b
+              <Button
                 id="main-more-btn"
                 variant="outline-dark"
                 onClick={() => {
@@ -231,7 +234,7 @@ function App() {
                 }}
               >
                 펼쳐보기
-              </Button_b>
+              </Button>
             </>
           }
         />
@@ -256,7 +259,7 @@ function App() {
               <div className="err-page">
                 <div className="err-page-child">⚠</div>
                 <h1 className="err-page-child">알 수 없는 페이지입니다.</h1>
-                <Button_b
+                <Button
                   className="err-page-child"
                   onClick={() => {
                     navigate(-1);
@@ -264,7 +267,7 @@ function App() {
                   variant="info"
                 >
                   이전 페이지로
-                </Button_b>
+                </Button>
               </div>
             </>
           }

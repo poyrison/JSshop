@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 
-function Recent_item({ useNavigate }) {
+function Recent_Item({ useNavigate }) {
   const BASKET_ITEM = useSelector((state) => state.item);
-  const STORAGE_PLUS = useSelector((state) => state.storage);
+
+  const getStorageId = JSON.parse(localStorage.getItem("watched-id"));
+  const getStorageTitle = JSON.parse(localStorage.getItem("watched-title"));
 
   const navigate = useNavigate();
   return (
@@ -18,28 +20,29 @@ function Recent_item({ useNavigate }) {
           CART <span id="recent-title-cart-num">{`${BASKET_ITEM.length}`}</span>
         </p>
         <p className="recent-title">최근본상품</p>
-        {STORAGE_PLUS.map((e, i) => {
+        {getStorageId.map((e, i) => {
           return (
-            <div className="recent-item-box">
+            <div className="recent-item-box" key={i}>
               <img
                 className="recent-item"
                 src={
-                  process.env.PUBLIC_URL + `/img/shoes${STORAGE_PLUS[i].id}.jpg`
+                  process.env.PUBLIC_URL + `/img/shoes${getStorageId[i]}.jpg`
                 }
+                alt={`${getStorageId[i]}`}
                 onClick={() => {
-                  navigate(`/detail/${STORAGE_PLUS[i].id}`);
+                  navigate(`/detail/${getStorageId[i]}`);
                 }}
               />
-              <p className="recent-item-title">{`${STORAGE_PLUS[i].title}`}</p>
+              <p className="recent-item-title">{`${getStorageTitle[i]}`}</p>
             </div>
           );
         })}
         <a href="#" id="recent-box-top-btn">
-          <div id="recent-box-top-btn">TOP▲</div>
+          <div>TOP▲</div>
         </a>
       </div>
     </>
   );
 }
 
-export default Recent_item;
+export default Recent_Item;
