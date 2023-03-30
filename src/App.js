@@ -9,7 +9,7 @@ import data from "./data.js";
 import Items from "./items.js";
 import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
-import Alert_icon from "./routes/Alert_Icon.js";
+import Alert_Icon from "./routes/Alert_Icon.js";
 import Recent_Item from "./routes/Recent_Item.js";
 
 import Nav from "react-bootstrap/Nav";
@@ -189,7 +189,7 @@ function App() {
                     className={`start ${alertFadeEnd}`}
                     style={{ flex: 1 }}
                   >
-                    <Alert_icon />
+                    <Alert_Icon />
                     <b>{`마지막 상품입니다.`}</b>
                   </Alert>
                 )}
