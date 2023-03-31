@@ -60,25 +60,25 @@ function Detail({ shoes, alertGridStyle }) {
     };
   }, [alertFadeEnd]);
 
-  // useEffect(() => {
-  //   let getId = localStorage.getItem("watched-id");
-  //   let getTitle = localStorage.getItem("watched-title");
+  useEffect(() => {
+    let getId = localStorage.getItem("watched-id");
+    let getTitle = localStorage.getItem("watched-title");
 
-  //   getId = JSON.parse(getId);
-  //   getTitle = JSON.parse(getTitle);
+    getId = JSON.parse(getId);
+    getTitle = JSON.parse(getTitle);
 
-  //   getId.push(findId.id);
-  //   getTitle.push(findId.title);
+    getId.push(findId.id);
+    getTitle.push(findId.title);
 
-  //   getId = new Set(getId);
-  //   getTitle = new Set(getTitle);
+    getId = new Set(getId);
+    getTitle = new Set(getTitle);
 
-  //   getId = Array.from(getId);
-  //   getTitle = Array.from(getTitle);
+    getId = Array.from(getId);
+    getTitle = Array.from(getTitle);
 
-  //   localStorage.setItem("watched-id", JSON.stringify(getId));
-  //   localStorage.setItem("watched-title", JSON.stringify(getTitle));
-  // }, []);
+    localStorage.setItem("watched-id", JSON.stringify(getId));
+    localStorage.setItem("watched-title", JSON.stringify(getTitle));
+  }, []);
 
   return (
     <Container>
