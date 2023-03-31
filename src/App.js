@@ -73,11 +73,11 @@ function App() {
     // localStorage.getItem("...", JSON.stringify([])); - 데이터 조회
     // localStorage.removeItem("...", JSON.stringify([])); - 데이터 삭제
 
-    // localStorage.setItem("watched-id", JSON.stringify([]));
-    // localStorage.setItem("watched-title", JSON.stringify([]));
+    localStorage.setItem("watched-id", JSON.stringify([]));
+    localStorage.setItem("watched-title", JSON.stringify([]));
 
-    localStorage.removeItem("watched-id", JSON.stringify([]));
-    localStorage.removeItem("watched-title", JSON.stringify([]));
+    // localStorage.removeItem("watched-id", JSON.stringify([]));
+    // localStorage.removeItem("watched-title", JSON.stringify([]));
   }, []);
 
   return (
