@@ -20,7 +20,7 @@ function Recent_Item({ useNavigate }) {
           CART <span id="recent-title-cart-num">{`${BASKET_ITEM.length}`}</span>
         </p>
         <p className="recent-title">최근본상품</p>
-        {/* {getStorageId.map((e, i) => {
+        {getStorageId.map((e, i) => {
           return (
             <div className="recent-item-box" key={i}>
               <img
@@ -37,7 +37,7 @@ function Recent_Item({ useNavigate }) {
               <p className="recent-item-title">{`${getStorageTitle[i]}`}</p>
             </div>
           );
-        })} */}
+        })}
         <a href="#" id="recent-box-top-btn">
           <div>TOP▲</div>
         </a>
