@@ -1,10 +1,4 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import styled from "styled-components";
-import axios from "axios";
-import { useSelector } from "react-redux";
-
 import data from "./data.js";
 import Items from "./items.js";
 import Detail from "./routes/Detail.js";
@@ -13,6 +7,12 @@ import Alert_Icon from "./routes/Alert_Icon.js";
 import Recent_Item from "./routes/Recent_Item.js";
 import MainCarousel from "./MainCarousel.js";
 import MainNavbar from "./MainNavbar";
+
+import { useEffect, useState } from "react";
+import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import styled from "styled-components";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
