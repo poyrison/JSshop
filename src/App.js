@@ -7,6 +7,7 @@ import Alert_Icon from "./routes/Alert_Icon.js";
 import Recent_Item from "./routes/Recent_Item.js";
 import MainCarousel from "./MainCarousel.js";
 import MainNavbar from "./MainNavbar";
+import Footer from "./Footer.js";
 
 import { useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
@@ -142,6 +143,7 @@ function App() {
               >
                 펼쳐보기
               </Button>
+              <Footer />
             </>
           }
         />

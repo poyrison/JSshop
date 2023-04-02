@@ -67,7 +67,7 @@ body {
 .recent-item {
   cursor: pointer;
   width: 80px;
-  height: 70px;
+  height: 60px;
 }
 
 .recent-item-title {
@@ -222,4 +222,33 @@ body {
 #order-btn {
   padding: 10px 80px;
   font-weight: bold;
+}
+
+.footer-wrapper {
+  display: flex;
+  font-size: 12px;
+  height: 150px;
+  padding: 10px 5px;
+  background-color: #e9e6e6;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer-box {
+  /* border: 1px solid black; */
+}
+
+.footer-box p {
+  padding: 5px;
+  margin: 0;
+}
+
+.footer-icon-box {
+  margin-top: 20px;
+}
+
+.footer-icon {
+  cursor: pointer;
+  margin: 5px;
 }
