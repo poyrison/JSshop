@@ -11,8 +11,8 @@ import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
 import Alert_Icon from "./routes/Alert_Icon.js";
 import Recent_Item from "./routes/Recent_Item.js";
-import MainCarousel from "./routes/MainCarousel.js";
-import MainNavbar from "./routes/MainNavbar";
+import MainCarousel from "./MainCarousel.js";
+import MainNavbar from "./MainNavbar";
 
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
