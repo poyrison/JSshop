@@ -1,9 +1,9 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
-import { useSelector } from "react-redux";
 import styled from "styled-components";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import data from "./data.js";
 import Items from "./items.js";
@@ -11,15 +11,11 @@ import Detail from "./routes/Detail.js";
 import Cart from "./routes/Cart.js";
 import Alert_Icon from "./routes/Alert_Icon.js";
 import Recent_Item from "./routes/Recent_Item.js";
+import MainCarousel from "./routes/MainCarousel.js";
+import MainNavbar from "./routes/MainNavbar";
 
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Offcanvas from "react-bootstrap/Offcanvas";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
-import Carousel from "react-bootstrap/Carousel";
 
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -39,8 +35,6 @@ function App() {
   const [loadingIcon, setLoadingIcon] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
   const [alertFadeEnd, setAlertFadeEnd] = useState("");
-
-  const BASKET_ITEM = useSelector((state) => state.item);
 
   /** grid 클래스명 */
   const gridStyle = "col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4";
@@ -82,108 +76,18 @@ function App() {
 
   return (
     <div className="App">
-      {/* lg에 해당하는 navbar style 적용 */}
-      {["lg"].map((expand, i) => (
-        <div style={{ height: "56px" }} key={i}>
-          <Navbar
-            bg="light"
-            variant="light"
-            expand={expand}
-            id="reactHead"
-            className="mb-3 navbar"
-            style={{ position: "fixed", width: "100%" }}
-          >
-            <Container fluid>
-              <Navbar.Brand
-                onClick={() => {
-                  navigate("/");
-                }}
-                style={{ cursor: "pointer", marginLeft: "15px" }}
-              >
-                JS˙s Shop
-              </Navbar.Brand>
-              <Navbar.Toggle
-                aria-controls={`offcanvasNavbar-expand-${expand}`}
-              />
-              <Navbar.Offcanvas
-                id={`offcanvasNavbar-expand-${expand}`}
-                aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                placement="end"
-              >
-                <Offcanvas.Header closeButton>
-                  <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                    Information
-                  </Offcanvas.Title>
-                </Offcanvas.Header>
-                <Offcanvas.Body>
-                  <Nav className="justify-content-end flex-grow-1 pe-3">
-                    <Nav.Link
-                      title="홈으로"
-                      className="navIcon"
-                      onClick={() => {
-                        navigate("/");
-                      }}
-                    >
-                      <img
-                        style={{
-                          height: "30px",
-                          width: "33px",
-                          marginLeft: "-2px",
-                        }}
-                        src={process.env.PUBLIC_URL + `/img/home.png`}
-                      />
-                    </Nav.Link>
-                    <Nav.Link
-                      className="navIcon"
-                      title="장바구니"
-                      onClick={() => {
-                        navigate("/cart");
-                      }}
-                    >
-                      <img
-                        style={{ height: "28px", width: "30px" }}
-                        src={process.env.PUBLIC_URL + `/img/cart.png`}
-                      />
-                      {BASKET_ITEM.length == 0 ? null : (
-                        <div className="cartItemsNum">{BASKET_ITEM.length}</div>
-                      )}
-                    </Nav.Link>
-                  </Nav>
-                  <Form className="d-flex">
-                    <Form.Control
-                      type="search"
-                      placeholder="Search"
-                      className="me-2"
-                      aria-label="Search"
-                    />
-                    <Button variant="outline-success">Search</Button>
-                  </Form>
-                </Offcanvas.Body>
-              </Navbar.Offcanvas>
-            </Container>
-          </Navbar>
-        </div>
-      ))}
+      <MainNavbar
+        navigate={navigate}
+        Button={Button}
+        useSelector={useSelector}
+      />
       <Routes>
         <Route
           sm="true"
           path="/"
           element={
             <>
-              <Carousel fade className="main-carousel">
-                <Carousel.Item>
-                  <div id="bg1" className="bg-img" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <div id="bg2" className="bg-img" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <div id="bg3" className="bg-img" />
-                </Carousel.Item>
-                <Carousel.Item>
-                  <div id="bg4" className="bg-img" />
-                </Carousel.Item>
-              </Carousel>
+              <MainCarousel />
               <Recent_Item useNavigate={useNavigate} />
               <MoreBtnAlert>
                 {textAlert === true && (
