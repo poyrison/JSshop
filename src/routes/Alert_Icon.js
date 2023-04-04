@@ -2,7 +2,7 @@ function Alert_Icon() {
   return (
     <>
       <svg
-        className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1cw4hi4 alert-icon"
+        className="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1cw4hi4 alert_icon"
         focusable="false"
         aria-hidden="true"
         viewBox="0 0 24 24"

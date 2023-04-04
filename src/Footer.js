@@ -1,8 +1,8 @@
 function Footer() {
   return (
     <>
-      <div className="footer-wrapper">
-        <div className="footer-box">
+      <div className="footer_wrapper">
+        <div className="footer_box">
           <p>
             안녕하세요, 저는 새로운 기술과 도구에 대한 열정을 가지고 있는 신입
             프론트엔드 개발자 입니다.
@@ -11,15 +11,15 @@ function Footer() {
             찾고 있습니다.
           </p>
         </div>
-        <div className="footer-icon-box">
+        <div className="footer_icon_box">
           <i
             onClick={() => {
               window.open("https://github.com/poyrison");
             }}
-            class="fa-brands fa-square-github fa-2xl footer-icon"
+            className="fa-brands fa-square-github fa-2xl footer_icon"
           ></i>
-          <i class="fa-brands fa-square-instagram fa-2xl footer-icon"></i>
-          <i class="fa-brands fa-square-twitter fa-2xl footer-icon"></i>
+          <i className="fa-brands fa-square-instagram fa-2xl footer_icon"></i>
+          <i className="fa-brands fa-square-twitter fa-2xl footer_icon"></i>
         </div>
       </div>
     </>

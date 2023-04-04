@@ -1,3 +1,5 @@
+import Footer from "../Footer.js";
+
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -70,7 +72,7 @@ function Cart() {
                 <div>
                   <Button
                     variant="outline-dark"
-                    className="itemNumBtn itemNumMinus"
+                    className="item_num_btn item_num_minus"
                     onClick={() => {
                       {
                         ITEM[i].count <= 1
@@ -89,7 +91,7 @@ function Cart() {
                   {ITEM[i].count}
                   <Button
                     variant="outline-dark"
-                    className=" itemNumBtn itemNumPlus"
+                    className=" item_num_btn item_num_plus"
                     onClick={() => {
                       dispatch(changeCountPlus(ITEM[i].id));
                       dispatch(plusAmount(ITEM[i].price));
@@ -117,12 +119,13 @@ function Cart() {
           ))}
         </tbody>
       </Table>
-      <Button variant="dark" id="order-btn">
+      <Button variant="dark" id="order_btn">
         주문하기
       </Button>
       <h5 className="total_amount">
         최종 결제 금액: {TOTAL_AMOUNT.toLocaleString()}원
       </h5>
+      <Footer />
     </div>
   );
 }

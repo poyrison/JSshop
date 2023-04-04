@@ -21,7 +21,7 @@ import styled from "styled-components";
 //   display: ${(props) => display};
 // `;
 
-function Detail({ shoes, alertGridStyle }) {
+function Detail({ shoes, alertGridStyle, Footer }) {
   const [alertOpen, setAlertOpen] = useState(false);
   const [fade, setFade] = useState("");
   const [alertFadeEnd, setAlertFadeEnd] = useState("");
@@ -84,20 +84,20 @@ function Detail({ shoes, alertGridStyle }) {
     <Container>
       <Row>
         <Col className={`${alertGridStyle}`}>
-          <div className="detail-alert-area">
+          <div className="detail_alert_area">
             <Alert variant="success" className={`start ${alertFadeEnd}`}>
               <Alert_Icon />
               {`${findId.title} 상품을 장바구니에 담았어요!!`}
             </Alert>
           </div>
           <img
-            className={`start ${fade} detail-body`}
+            className={`start ${fade} detail_body`}
             src={process.env.PUBLIC_URL + `/img/shoes${id}.jpg`}
             alt={`shoes${id}.jpg`}
             width="100%"
           />
         </Col>
-        <Col className={`${alertGridStyle} detail-body`}>
+        <Col className={`${alertGridStyle} detail_body`}>
           <h4 className="pt-5">{findId.title}</h4>
           <p>{findId.content}</p>
           <p>{findId.price.toLocaleString()}원</p>
@@ -124,7 +124,7 @@ function Detail({ shoes, alertGridStyle }) {
             }}
             title="담기"
             style={{ marginRight: "10px", padding: "5px 31px" }}
-            className="btn btn-success"
+            className="btn btn_success"
           >
             <img
               style={{ height: "25px", width: "25px" }}
@@ -136,6 +136,7 @@ function Detail({ shoes, alertGridStyle }) {
         </Col>
         <Detail_Nav />
       </Row>
+      <Footer />
     </Container>
   );
 }

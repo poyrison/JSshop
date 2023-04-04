@@ -9,7 +9,7 @@ import MainCarousel from "./MainCarousel.js";
 import MainNavbar from "./MainNavbar";
 import Footer from "./Footer.js";
 
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
@@ -70,9 +70,6 @@ function App() {
 
     localStorage.setItem("watched-id", JSON.stringify([]));
     localStorage.setItem("watched-title", JSON.stringify([]));
-
-    // localStorage.removeItem("watched-id", JSON.stringify([]));
-    // localStorage.removeItem("watched-title", JSON.stringify([]));
   }, []);
 
   return (
@@ -114,7 +111,7 @@ function App() {
               </Backdrop>
               <Items shoes={shoes} navigate={navigate} gridStyle={gridStyle} />
               <Button
-                id="main-more-btn"
+                id="main_more_btn"
                 variant="outline-dark"
                 onClick={() => {
                   setLoadingIcon(true);
@@ -155,6 +152,7 @@ function App() {
               shoes={shoes}
               gridStyle={gridStyle}
               alertGridStyle={alertGridStyle}
+              Footer={Footer}
             />
           }
         />
@@ -165,11 +163,11 @@ function App() {
           path="*"
           element={
             <>
-              <div className="err-page">
-                <div className="err-page-child">⚠</div>
-                <h1 className="err-page-child">알 수 없는 페이지입니다.</h1>
+              <div className="err_page">
+                <div className="err_page_child">⚠</div>
+                <h1 className="err_page_child">알 수 없는 페이지입니다.</h1>
                 <Button
-                  className="err-page-child"
+                  className="err_page_child"
                   onClick={() => {
                     navigate(-1);
                   }}
