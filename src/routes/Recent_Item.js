@@ -4,7 +4,10 @@ function Recent_Item({ useNavigate }) {
   const BASKET_ITEM = useSelector((state) => state.item);
 
   const getStorageId = JSON.parse(localStorage.getItem("watched-id"));
+  // getStorageId.length >= 5 && getStorageId(1).remove();
+
   const getStorageTitle = JSON.parse(localStorage.getItem("watched-title"));
+  // getStorageTitle.length >= 5 && getStorageTitle(1).remove();
 
   const navigate = useNavigate();
   return (

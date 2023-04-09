@@ -13,13 +13,19 @@ function Footer() {
         </div>
         <div className="footer_icon_box">
           <i
+            title="GitHub"
             onClick={() => {
               window.open("https://github.com/poyrison");
             }}
             className="fa-brands fa-square-github fa-2xl footer_icon"
           ></i>
-          <i className="fa-brands fa-square-instagram fa-2xl footer_icon"></i>
-          <i className="fa-brands fa-square-twitter fa-2xl footer_icon"></i>
+          <i
+            title="Instagram"
+            onClick={() => {
+              window.open("https://www.instagram.com/jun._.sik/");
+            }}
+            className="fa-brands fa-square-instagram fa-2xl footer_icon"
+          ></i>
         </div>
       </div>
     </>

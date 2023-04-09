@@ -1,5 +1,3 @@
-import Footer from "../Footer.js";
-
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -125,7 +123,6 @@ function Cart() {
       <h5 className="total_amount">
         최종 결제 금액: {TOTAL_AMOUNT.toLocaleString()}원
       </h5>
-      <Footer />
     </div>
   );
 }

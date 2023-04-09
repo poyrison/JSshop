@@ -35,6 +35,7 @@ function App() {
   const [dataClick, setDataClick] = useState(2);
   const [loadingIcon, setLoadingIcon] = useState(false);
   const [textAlert, setTextAlert] = useState(false);
+  const [moreBtn, setMoreBtn] = useState(true);
   const [alertFadeEnd, setAlertFadeEnd] = useState("");
 
   /** grid 클래스명 */
@@ -110,37 +111,39 @@ function App() {
                 <CircularProgress color="inherit" />
               </Backdrop>
               <Items shoes={shoes} navigate={navigate} gridStyle={gridStyle} />
-              <Button
-                id="main_more_btn"
-                variant="outline-dark"
-                onClick={() => {
-                  setLoadingIcon(true);
-                  setDataClick(dataClick + 1);
-                  axios
-                    .get(
-                      `https://codingapple1.github.io/shop/data${dataClick}.json`
-                    )
-                    .then((result) => {
-                      const newShoes = [...shoes, ...result.data];
-                      setShoes(newShoes);
-                      setTimeout(() => {
-                        setLoadingIcon(false);
-                      }, 300);
-                    })
-                    .catch(() => {
-                      setTimeout(() => {
-                        setLoadingIcon(false);
-                      }, 300);
-                      setTextAlert(true);
-                      setTimeout(() => {
-                        setAlertFadeEnd("end");
-                      }, 10);
-                    });
-                }}
-              >
-                펼쳐보기
-              </Button>
-              <Footer />
+              {moreBtn === true && (
+                <Button
+                  id="main_more_btn"
+                  variant="outline-dark"
+                  onClick={() => {
+                    setLoadingIcon(true);
+                    setDataClick(dataClick + 1);
+                    axios
+                      .get(
+                        `https://codingapple1.github.io/shop/data${dataClick}.json`
+                      )
+                      .then((result) => {
+                        const newShoes = [...shoes, ...result.data];
+                        setShoes(newShoes);
+                        setTimeout(() => {
+                          setLoadingIcon(false);
+                        }, 300);
+                      })
+                      .catch(() => {
+                        setTimeout(() => {
+                          setLoadingIcon(false);
+                        }, 300);
+                        setTextAlert(true);
+                        setMoreBtn(false);
+                        setTimeout(() => {
+                          setAlertFadeEnd("end");
+                        }, 10);
+                      });
+                  }}
+                >
+                  펼쳐보기
+                </Button>
+              )}
             </>
           }
         />
@@ -180,6 +183,7 @@ function App() {
           }
         />
       </Routes>
+      <Footer />
     </div>
   );
 }

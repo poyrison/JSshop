@@ -101,10 +101,6 @@ function Detail({ shoes, alertGridStyle, Footer }) {
           <h4 className="pt-5">{findId.title}</h4>
           <p>{findId.content}</p>
           <p>{findId.price.toLocaleString()}원</p>
-          <InputGroup
-            className="mb-3"
-            style={{ width: "50%", marginLeft: "25%" }}
-          ></InputGroup>
           <ButtonMUI
             variant="contained"
             color="success"
@@ -136,7 +132,6 @@ function Detail({ shoes, alertGridStyle, Footer }) {
         </Col>
         <Detail_Nav />
       </Row>
-      <Footer />
     </Container>
   );
 }

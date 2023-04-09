@@ -26,7 +26,7 @@ function MainNavbar({ navigate, Button, useSelector }) {
                 }}
                 style={{ cursor: "pointer", marginLeft: "15px" }}
               >
-                JS˙s Shop
+                JS Shop
               </Navbar.Brand>
               <Navbar.Toggle
                 aria-controls={`offcanvasNavbar-expand-${expand}`}
@@ -71,7 +71,9 @@ function MainNavbar({ navigate, Button, useSelector }) {
                         src={process.env.PUBLIC_URL + `/img/cart.png`}
                       />
                       {BASKET_ITEM.length == 0 ? null : (
-                        <div className="cartItemsNum">{BASKET_ITEM.length}</div>
+                        <div className="cart_item_num">
+                          {BASKET_ITEM.length}
+                        </div>
                       )}
                     </Nav.Link>
                   </Nav>
