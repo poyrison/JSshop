@@ -75,6 +75,8 @@
 }
 
 #recent_box_top_btn {
+  position: sticky;
+  top: 0;
   font-size: 13px;
   cursor: pointer;
   background-color: #888181;
@@ -233,6 +235,7 @@
 
 .footer_wrapper {
   display: flex;
+  /* bottom: 0; */
   font-size: 12px;
   height: 150px;
   padding: 10px 5px;
