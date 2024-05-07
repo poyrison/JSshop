@@ -65,12 +65,13 @@ function App() {
   }, [alertFadeEnd]);
 
   useEffect(() => {
-    // localStorage.setItem("...", JSON.stringify([])); - 데이터 추가
-    // localStorage.getItem("...", JSON.stringify([])); - 데이터 조회
-    // localStorage.removeItem("...", JSON.stringify([])); - 데이터 삭제
-
-    localStorage.setItem("watched-id", JSON.stringify([]));
-    localStorage.setItem("watched-title", JSON.stringify([]));
+    // 저장된 데이터가 없을 경우에만 초기화
+    if (!localStorage.getItem("watched-id")) {
+      localStorage.setItem("watched-id", JSON.stringify([]));
+    }
+    if (!localStorage.getItem("watched-title")) {
+      localStorage.setItem("watched-title", JSON.stringify([]));
+    }
   }, []);
 
   return (

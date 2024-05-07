@@ -19,13 +19,6 @@ function Footer() {
             }}
             className="fa-brands fa-square-github fa-2xl footer_icon"
           ></i>
-          <i
-            title="Instagram"
-            onClick={() => {
-              window.open("https://www.instagram.com/jun._.sik/");
-            }}
-            className="fa-brands fa-square-instagram fa-2xl footer_icon"
-          ></i>
         </div>
       </div>
     </>
