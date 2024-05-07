@@ -19,4 +19,6 @@
 # 주요 기능
 
 - local storage를 사용하여 최근 본 상품 저장 기능 구현
-  ![typing](public/image/typing.gif)
+  ![typing](/public/img/local_storage.gif)
+- Redux를 통한 전역 상태 관리(물건 개수에 의한 가격 변동, 장바구니)
+  ![typing](/public/img/redux.gif)
