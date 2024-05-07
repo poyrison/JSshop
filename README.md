@@ -1,4 +1,4 @@
-# React Shop
+# JSshop
 
 ⚙ 현재 서비스 중인 URL: <https://js-shop.netlify.app>
 
